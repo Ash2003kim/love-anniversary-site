@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Decode My Love</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #love-letter {
+      display: none;
+      margin-top: 40px;
+      padding: 20px;
+      background: #ffe6f0;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      font-size: 18px;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <h1>Decode My Love 💖</h1>
+  <p>Solve the puzzle to reveal a message from your girl.</p>
+
+  <form id="puzzleForm">
+    <div><input type="text" placeholder="When did we first talk?" id="q1"></div>
+    <div><input type="text" placeholder="When did we first meet?" id="q2"></div>
+    <div><input type="text" placeholder="When was our first kiss?" id="q3"></div>
+    <div><input type="text" placeholder="When did I first say I love you?" id="q4"></div>
+    <div><input type="text" placeholder="What do I call you?" id="q5"></div>
+    <button type="button" onclick="checkAnswers()">Decode</button>
+  </form>
+
+  <div id="love-letter">
+    <h2>🎉 Love Letter 🎉</h2>
+    <p>My Nitanshu ji,</p>
+
+    <p>Sabse pehle... I love you the most.<br>
+    Tum meri duniya ho. Tumhare bina sab kuch adhoora sa lagta hai.<br>
+    Mujhe pata hai duniya kabhi humare saath nahi hogi,<br>
+    par main hamesha tumhare saath rahungi — bina kisi condition ke.</p>
+
+    <p>Main hamesha tumhara saath dungi,<br>
+    jab duniya tumhare khilaaf ho, tab bhi.<br>
+    Jab tum toot jao, main tumhe sambhalungi.<br>
+    Jab tum chup raho, main tumhari khamoshi sunungi.<br>
+    Aur jab sab kuch mushkil lage, main tumhara safe space banungi.</p>
+
+    <p>Tumne aaj sab clues solve kiye —<br>
+    waise hi jaise tum roz mere dil ke tukdon ko jodte ho... pyaar se.<br>
+    Tum sirf mera pyaar nahi ho, tum meri strength, meri smile, meri shanti ho.<br>
+    Tum mere har din ka sabse pyaara hissa ho.</p>
+
+    <p>Thank you, Nitanshu baby,<br>
+    for loving me when I couldn’t love myself,<br>
+    for choosing me every single day.</p>
+
+    <p>Main hamesha tumhari hoon — har janam, har pal.<br>
+    Bas yeh yaad rakhna: chahe kuch bhi ho jaye,<br>
+    main kahin nahi jaa rahi. Tumhara intezaar hamesha yahin rahega…<br>
+    tumhare liye, sirf tumhare liye. 💖</p>
+
+    <p><strong>Tumhari forever wali ladki,<br>
+    pikachu ki ash</strong></p>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: "17 june 2023",
+        q2: "10 november 2024",
+        q3: "26 november 2024",
+        q4: "6 july 2023",
+        q5: ["nitanshu ji", "nitanshu baby", "my love"]
+      };
+
+      const userAnswers = {
+        q1: document.getElementById("q1").value.trim().toLowerCase(),
+        q2: document.getElementById("q2").value.trim().toLowerCase(),
+        q3: document.getElementById("q3").value.trim().toLowerCase(),
+        q4: document.getElementById("q4").value.trim().toLowerCase(),
+        q5: document.getElementById("q5").value.trim().toLowerCase()
+      };
+
+      if (userAnswers.q1 === answers.q1 &&
+          userAnswers.q2 === answers.q2 &&
+          userAnswers.q3 === answers.q3 &&
+          userAnswers.q4 === answers.q4 &&
+          answers.q5.includes(userAnswers.q5)) {
+        document.getElementById("love-letter").style.display = "block";
+        confetti();
+      } else {
+        alert("Oops! Kuch toh galat hai. Try again, my love!");
+      }
+    }
+  </script>
+</body>
+</html>
